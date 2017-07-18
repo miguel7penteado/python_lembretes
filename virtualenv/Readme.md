@@ -6,8 +6,8 @@ Uma ferramenta simples, porém maravilhosa, que engloba as seguintes features:
 
 1. Organiza todos os seus ambientes virtuais em um único lugar.
 2. Adiciona funções de create, delete e copy.
-3- Troca de ambiente com um único comando.
-4- Permite a criação de hooks para todas as suas operações.
+3. Troca de ambiente com um único comando.
+4. Permite a criação de hooks para todas as suas operações.
 
 
 Bibliografia:
