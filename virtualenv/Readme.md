@@ -4,10 +4,10 @@ O virtualenvwrapper, como o seu nome sugere, é um wrapper para o virtualenv, ad
 
 Uma ferramenta simples, porém maravilhosa, que engloba as seguintes features:
 
-    Organiza todos os seus ambientes virtuais em um único lugar.
-    Adiciona funções de create, delete e copy.
-    Troca de ambiente com um único comando.
-    Permite a criação de hooks para todas as suas operações.
+o- Organiza todos os seus ambientes virtuais em um único lugar.
+o- Adiciona funções de create, delete e copy.
+o- Troca de ambiente com um único comando.
+o- Permite a criação de hooks para todas as suas operações.
 
 
 Bibliografia:
