@@ -9,6 +9,16 @@ Uma ferramenta simples, porém maravilhosa, que engloba as seguintes features:
 3. Troca de ambiente com um único comando.
 4. Permite a criação de hooks para todas as suas operações.
 
+## 1. Instalando suporte a ambiente virtual no ubuntu/debian/devuan :
+### 1.1 Instalando o virtualenv para python 2.7.x
+```bash
+sudo apt-get install python-virtualenv
+```
+### 1.1.1 Instalando o virtualenv para python 3.x
+```bash
+sudo apt-get install python3-virtualenv
+```
+
 
 Bibliografia:
 http://klauslaube.com.br/2015/07/23/virtualenvwrapper-o-basico-para-um-bom-ambiente-de-desenvolvimento-python.html
