@@ -45,6 +45,27 @@ FDA
 export PIP_REQUIRE_VIRTUALENV=true 
 
 ```
+## 3 Testando ambientes com o virtualenvwrapper:
+Agora vamos testar criando o ambiente 'abacaxi':
+
+```bash
+mkvirtualenv abacaxi
+```
+Agora instale por exemplo, o Django no ambiente 'abacaxi':
+```bash
+(abacaxi) $ pip install django
+```
+ok, agora vamos desativar o ambiente 'abacaxi':
+```bash
+(abacaxi) $ deactivate
+```
+
+Agora vamos ativar o ambiente 'abacaxi':
+```bash
+$ workon abacaxi
+```
+
+Feito. Agora você tem um abiente python organizado.
 
 
 Bibliografia:
