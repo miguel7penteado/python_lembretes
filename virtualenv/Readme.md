@@ -28,7 +28,7 @@ sudo apt-get install python3-virtualenv
 Já o virtualenvwrapper serve para organizar todos os ambientes virtualenv que você criar. Supondo que você tenha vários ambientes virtualenv dispersos no disco rígido, vai ficar um tanto difícil gerenciar todos eles ao passo que o número de ambientes aumente. Então entra em cena o virtualenvwrapper. Tudo isso se faz setando uma variável de ambiente chamada 'WORKON_HOME'.
 ### 2.1 Instalando o virtualenvwrapper
 
-```{bash virtualenvwrapper, echo=FALSE}
+```bash
 sudo apt-get install virtualenvwrapper
 
 # agora você deve definir a variável de ambiente WORKON_HOME em tempo de carga do sistema
