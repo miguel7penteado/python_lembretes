@@ -70,3 +70,30 @@ Feito. Agora você tem um abiente python organizado.
 
 Bibliografia:
 http://klauslaube.com.br/2015/07/23/virtualenvwrapper-o-basico-para-um-bom-ambiente-de-desenvolvimento-python.html
+
+
+## Resumo
+
+```bash
+sudo apt-get update
+sudo apt-get install python-setuptools python-dev build-essential git-core -y
+sudo easy_install pip
+sudo pip install virtualenv
+sudo pip install virtualenvwrapper
+mkdir ~/virtualenvs 
+echo "export WORKON_HOME=~/virtualenvs" >> ~/.bashrc
+echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc 
+echo "export PIP_VIRTUALENV_BASE=~/virtualenvs" >> ~/.bashrc 
+source ~/.bashrc 
+mkvirtualenv abacaxi
+```
+
+Se você quiser ligar/desligar seu ambiente virtual:
+```bash
+deactivate
+```
+
+Se você quiser reativar o ambiente virtual do seu projeto, por exemplo o projeto fictício abacaxi:
+```bash
+workon abacaxi
+```
