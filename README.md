@@ -3,6 +3,26 @@ Lembretes da liguagem Python
 
 Conceitos gerais de **herança**, **encapsulamento**, **sobrecarga** e **polimorfismo**.
 ## 1- **Encapsulamento**
+O encapsulamento é a propriedade de proteger os atributos da classe de acessos indevidos. Em linguagens como C++ e Java , podemos implementar essa propriedade através de palavras-chave da linguagem aplicadas ao atributo, tais como public e private. Mas e em python, será que existe essa possibilidade ?
+```python
+class Pessoa(object):
+    __id;
+    __nome;
+    __idade;
+    def __init__(self):
+        self.__id = 0
+        self.__nome = ''
+        self.__idade = 0
+    def obtemNome(self):
+        return self.__nome
+    def gravaNome(self,parametro_nome):
+        self.__nome = parametro_nome
+    def obterIdade(self):
+        return self.__idade
+    def gravaIdade(self,parametro_idade):
+        self.__nome = parametro_idade
+
+```
 ## 2- **Herança**
 ## 3- **Sobrecarga**
 ## 4- **Polimorfismo**
