@@ -20,7 +20,7 @@ class Pessoa(object):
     def obterIdade(self):
         return self.__idade
     def gravaIdade(self,parametro_idade):
-        self.__nome = parametro_idade
+        return self.__idade
 
 ```
 ## 2- **Herança**
