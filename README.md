@@ -6,13 +6,16 @@ Conceitos gerais de **herança**, **encapsulamento**, **sobrecarga** e **polimor
 O encapsulamento é a propriedade de proteger os atributos da classe de acessos indevidos. Em linguagens como C++ e Java , podemos implementar essa propriedade através de palavras-chave da linguagem aplicadas ao atributo, tais como public e private. Mas e em python, será que existe essa possibilidade ?
 ```python
 class Pessoa(object):
+    # Atributos Private
     __id;
     __nome;
     __idade;
+    # Construtor
     def __init__(self):
         self.__id = 0
         self.__nome = ''
         self.__idade = 0
+    # getters and setters 
     def obtemNome(self):
         return self.__nome
     def gravaNome(self,parametro_nome):
