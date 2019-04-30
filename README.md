@@ -2,6 +2,11 @@
 Lembretes da liguagem Python
 
 Conceitos gerais de **herança**, **encapsulamento**, **sobrecarga** e **polimorfismo**.
+## 1- **Encapsulamento**
+## 2- **Herança**
+## 3- **Sobrecarga**
+## 4- **Polimorfismo**
+
 
 ## Que ferramenta eu uso para compilar e executar meus projetos ?
 
