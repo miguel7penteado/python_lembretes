@@ -1,0 +1,6 @@
+output_dir: "docs"
+book_filename: "Lembretes_Python_Miguel_Penteado"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Capítulo "

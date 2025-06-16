@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verificador Mega-Sena</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2em;
+      background: #f9f9f9;
+    }
+
+    h1 {
+      color: #145;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      margin: 0.2em;
+      padding: 0.4em;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 0.6em 1em;
+      margin-top: 1em;
+      font-size: 1em;
+      background-color: #2d8d5c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #246c48;
+    }
+
+    #resultados {
+      margin-top: 2em;
+      padding: 1em;
+      background: white;
+      border: 1px solid #ccc;
+      max-height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+
+    .erro {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Verificador da Mega-Sena</h1>
+  <p>Digite 6 números entre 1 e 60:</p>
+  <div id="inputs">
+    <input type="number" min="1" max="60">
+    <input type="number" min="1" max="60">
+    <input type="number" min="1" max="60">
+    <input type="number" min="1" max="60">
+    <input type="number" min="1" max="60">
+    <input type="number" min="1" max="60">
+  </div>
+  <button onclick="verificarMegaSena()">Verificar</button>
+
+  <div id="resultados"></div>
+
+  <script>
+    const BASE_URL = "https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena";
+
+    async function fetchConcurso(numero = "") {
+      const url = numero ? `${BASE_URL}/${numero}` : BASE_URL;
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error("Erro ao buscar dados da Caixa");
+      const json = await resp.json();
+
+      const dezenas = json.listaDezenas || json.dezenas || json.dezenasSorteadasOrdemSorteio;
+      if (!dezenas) throw new Error("Dezenas não encontradas");
+
+      const numeroConcurso =
+        json.numero || json.numeroDoConcurso || json.idConcurso || numero;
+
+      return {
+        numero: parseInt(numeroConcurso),
+        dezenas: dezenas.map(Number).sort((a, b) => a - b),
+      };
+    }
+
+    function getNumerosUsuario() {
+      const inputs = document.querySelectorAll("#inputs input");
+      const numeros = Array.from(inputs).map(input => parseInt(input.value.trim()));
+      const unicos = [...new Set(numeros.filter(n => Number.isInteger(n) && n >= 1 && n <= 60))];
+      if (unicos.length !== 6) throw new Error("Digite 6 números únicos entre 1 e 60.");
+      return unicos.sort((a, b) => a - b);
+    }
+
+    function formatar(nums) {
+      return nums.map(n => n.toString().padStart(2, '0')).join(", ");
+    }
+
+    async function verificarMegaSena() {
+      const resultadosDiv = document.getElementById("resultados");
+      resultadosDiv.innerHTML = "Carregando...";
+      try {
+        const numerosUsuario = getNumerosUsuario();
+        const concursos = [];
+
+        const atual = await fetchConcurso();
+        for (let i = 0; i <= 20; i++) {
+          const n = atual.numero - i;
+          try {
+            const c = await fetchConcurso(n);
+            const acertos = c.dezenas.filter(d => numerosUsuario.includes(d)).sort((a, b) => a - b);
+            concursos.push({
+              numero: c.numero,
+              dezenas: c.dezenas,
+              acertos: acertos
+            });
+          } catch (e) {
+            console.warn("Erro ao buscar concurso " + n, e);
+          }
+        }
+
+        // Exibir resultados
+        let texto = "=== RESULTADOS ===\n";
+        concursos.sort((a, b) => b.numero - a.numero);
+        for (const c of concursos) {
+          texto += `Concurso ${c.numero}: ${formatar(c.dezenas)} → Acertos: ${c.acertos.length}`;
+          if (c.acertos.length > 0) {
+            texto += ` (${formatar(c.acertos)})`;
+          }
+          texto += "\n";
+        }
+        resultadosDiv.innerHTML = `<pre>${texto}</pre>`;
+      } catch (e) {
+        resultadosDiv.innerHTML = `<p class="erro">Erro: ${e.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
